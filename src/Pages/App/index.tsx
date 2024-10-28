@@ -4,7 +4,7 @@ function App() {
 
   return (
     <div className='bg-red-100'>
-      Hola Mundo
+      App
     </div>
   )
 }
