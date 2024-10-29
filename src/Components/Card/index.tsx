@@ -1,8 +1,11 @@
-import { Plus } from "lucide-react"
-import { MealDetails } from "../../interfaces/meals.interfaces";
+import { Plus } from 'lucide-react';
+import { MealDetails } from '../../interfaces/meals.interfaces';
+import { useContext } from 'react';
+import { ShoppingCartContext } from '../../Context';
 
-const Card = ({category, id, name, imageURL, price = 100}: MealDetails) => {
-  console.log('*** ~ file: index.tsx:5 ~ Card ~ name:', name);
+const Card = ({ category, id, name, imageURL, price = 100 }: MealDetails) => {
+  const context = useContext(ShoppingCartContext);
+
   return (
     <article className="bg-white cursor-pointer w-56 h-60 rounded-lg">
       <figure className="relative mb-2 w-full h-4/5">
@@ -10,11 +13,11 @@ const Card = ({category, id, name, imageURL, price = 100}: MealDetails) => {
           {`${category} ${id}`}
           {/* TODO: Delete ID de la card */}
         </span>
-        <img className="w-full h-full object-cover rounded-lg"
-          src={imageURL}
-          alt={name}
-        />
-        <button className="absolute top-0 right-0 flex justify-center items-center bg-white w-6 h-6 rounded-full m-2 p-1">
+        <img className="w-full h-full object-cover rounded-lg" src={imageURL} alt={name} />
+        <button
+          className="absolute top-0 right-0 flex justify-center items-center bg-white w-6 h-6 rounded-full m-2 p-1"
+          onClick={() => context.setCount(context.count + 1)}
+        >
           <Plus className="h-4 w-4" />
         </button>
       </figure>
