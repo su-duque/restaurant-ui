@@ -8,8 +8,7 @@ interface ShoppingCartContextProps {
   count: number;
   setCount: React.Dispatch<React.SetStateAction<number>>;
   isProductDetailOpen: boolean;
-  openProductDetail: () => void;
-  closeProductDetail: () => void;
+  toggleProductDetail: () => void;
 }
 
 // Creating a context
@@ -20,16 +19,14 @@ export const ShoppingCartProvider = ({ children }: ShoppingCartProviderProps) =>
   const [count, setCount] = useState(0);
   const [isProductDetailOpen, setIsProductDetailOpen] = useState(false);
 
-  const openProductDetail = () => setIsProductDetailOpen(true);
-  const closeProductDetail = () => setIsProductDetailOpen(false);
+  const toggleProductDetail = () => setIsProductDetailOpen(!isProductDetailOpen);
 
   return (
     <ShoppingCartContext.Provider
       value={{
         count,
         setCount,
-        openProductDetail,
-        closeProductDetail,
+        toggleProductDetail,
         isProductDetailOpen,
       }}
     >

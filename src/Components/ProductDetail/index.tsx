@@ -11,7 +11,7 @@ const ProductDetail = () => {
       <div className='flex justify-between items-center p-6'>
         <h2 className='font-medium text-xl'>Detail</h2>
         <button>
-          <CircleX strokeWidth={1} onClick={() => context.closeProductDetail()}/>
+          <CircleX strokeWidth={1} onClick={() => context.toggleProductDetail()}/>
         </button>
       </div>
     </aside>
