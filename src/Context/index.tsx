@@ -9,7 +9,8 @@ interface ShoppingCartContextProps {
   count: number;
   setCount: React.Dispatch<React.SetStateAction<number>>;
   isProductDetailOpen: boolean;
-  toggleProductDetails: () => void;
+  openProductDetails: () => void;
+  closeProductDetails: () => void;
   productToShow: MealDetails;
   setProductToShow: React.Dispatch<React.SetStateAction<MealDetails>>;
 }
@@ -24,7 +25,8 @@ export const ShoppingCartProvider = ({ children }: ShoppingCartProviderProps) =>
 
   // Product Details panel
   const [isProductDetailOpen, setIsProductDetailOpen] = useState(false);
-  const toggleProductDetails = () => setIsProductDetailOpen(!isProductDetailOpen);
+  const openProductDetails = () => setIsProductDetailOpen(true);
+  const closeProductDetails = () => setIsProductDetailOpen(false);
   const [productToShow, setProductToShow] = useState({} as MealDetails);
 
   return (
@@ -32,7 +34,8 @@ export const ShoppingCartProvider = ({ children }: ShoppingCartProviderProps) =>
       value={{
         count,
         setCount,
-        toggleProductDetails,
+        openProductDetails,
+        closeProductDetails,
         isProductDetailOpen,
         productToShow,
         setProductToShow,

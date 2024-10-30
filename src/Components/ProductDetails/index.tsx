@@ -13,7 +13,7 @@ const ProductDetails = () => {
       <div className='flex justify-between items-center p-6'>
         <h2 className='font-medium text-xl'>{context.productToShow.name} Details</h2>
         <button>
-          <CircleX strokeWidth={1} onClick={() => context.toggleProductDetails()} />
+          <CircleX strokeWidth={1} onClick={() => context.closeProductDetails()} />
         </button>
       </div>
       <figure className='flex justify-center'>

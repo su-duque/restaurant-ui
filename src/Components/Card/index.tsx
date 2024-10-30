@@ -8,7 +8,7 @@ const Card = (data: MealDetails) => {
   const context = useContext(ShoppingCartContext);
 
   const showProductDetails = (product: MealDetails) => {
-    context.toggleProductDetails();
+    context.openProductDetails();
     context.setProductToShow(product)
   }
 
