@@ -3,7 +3,7 @@ import { useContext } from 'react';
 import { ShoppingCartContext } from '../../Context';
 import './styles.css';
 
-const ProductDetail = () => {
+const ProductDetails = () => {
   const context = useContext(ShoppingCartContext);
 
   return (
@@ -11,11 +11,11 @@ const ProductDetail = () => {
       <div className='flex justify-between items-center p-6'>
         <h2 className='font-medium text-xl'>Detail</h2>
         <button>
-          <CircleX strokeWidth={1} onClick={() => context.toggleProductDetail()}/>
+          <CircleX strokeWidth={1} onClick={() => context.toggleProductDetails()}/>
         </button>
       </div>
     </aside>
   );
 };
 
-export default ProductDetail;
+export default ProductDetails;

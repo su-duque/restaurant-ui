@@ -3,7 +3,7 @@ import { useEffect, useState } from 'react';
 import { MealDetails, MealResponse } from '../../interfaces/meals.interfaces';
 
 import Card from '../../Components/Card';
-import ProductDetail from '../../Components/ProductDetail';
+import ProductDetails from '../../Components/ProductDetails';
 
 function Home() {
   const [items, setItems] = useState<MealDetails[]>([]);
@@ -39,7 +39,7 @@ function Home() {
           />
         ))}
       </section>
-      <ProductDetail />
+      <ProductDetails />
     </>
   );
 }
