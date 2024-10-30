@@ -1,6 +1,9 @@
 import { useEffect, useState } from 'react';
-import Card from '../../Components/Card';
+
 import { MealDetails, MealResponse } from '../../interfaces/meals.interfaces';
+
+import Card from '../../Components/Card';
+import ProductDetail from '../../Components/ProductDetail';
 
 function Home() {
   const [items, setItems] = useState<MealDetails[]>([]);
@@ -26,8 +29,17 @@ function Home() {
     <>
       Home
       <section className="grid place-items-center gap-4 grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 w-full max-w-screen-lg">
-        {items?.map((meal) => <Card id={meal.id} key={meal.id} category={'Breakfast'} name={meal.name} imageURL={meal.imageURL} />)}
+        {items?.map((meal) => (
+          <Card
+            id={meal.id}
+            key={meal.id}
+            category={'Breakfast'}
+            name={meal.name}
+            imageURL={meal.imageURL}
+          />
+        ))}
       </section>
+      <ProductDetail />
     </>
   );
 }
