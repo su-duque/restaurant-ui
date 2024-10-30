@@ -2,6 +2,7 @@ import { NavLink } from 'react-router-dom';
 import { useContext } from 'react';
 
 import { ShoppingCartContext } from '../../Context';
+import { ShoppingCart } from 'lucide-react';
 
 const NavBar = () => {
   const leftMenu = [
@@ -74,20 +75,14 @@ const NavBar = () => {
       route: '/sign-in',
       hasActiveState: true,
     },
-    {
-      className: '',
-      text: '🛒',
-      route: '/my-order',
-      hasActiveState: true,
-    },
   ];
 
   const activeStyle = 'underline underline-offset-4';
   const context = useContext(ShoppingCartContext);
 
   return (
-    <nav className="flex justify-between items-center fixed z-10 top-0 w-full py-5 px-8 text-sm font-light">
-      <ul className="flex items-center gap-3">
+    <nav className='flex justify-between items-center fixed z-10 top-0 w-full py-5 px-8 text-sm font-light'>
+      <ul className='flex items-center gap-3'>
         {leftMenu.map((item) => (
           <li key={item.text} className={item.className}>
             <NavLink
@@ -102,7 +97,7 @@ const NavBar = () => {
         ))}
       </ul>
 
-      <ul className="flex items-center gap-3">
+      <ul className='flex items-center gap-3'>
         {rightMenu.map((item) => (
           <li key={item.text} className={item.className}>
             <NavLink
@@ -111,10 +106,14 @@ const NavBar = () => {
                 isActive && item.hasActiveState ? activeStyle : undefined
               }
             >
-              {item.route === '/my-order' ? `${item.text}${context.count}` : item.text}
+              {item.text}
             </NavLink>
           </li>
         ))}
+        <li className='flex items-center  gap-0.5'>
+          <ShoppingCart strokeWidth={1} />
+          <div>{context.count}</div>
+        </li>
       </ul>
     </nav>
   );
