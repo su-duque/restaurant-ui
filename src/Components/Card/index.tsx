@@ -7,7 +7,10 @@ const Card = ({ category, id, name, imageURL, price = 100 }: MealDetails) => {
   const context = useContext(ShoppingCartContext);
 
   return (
-    <article className='bg-white cursor-pointer w-56 h-60 rounded-lg'>
+    <article
+      className='bg-white cursor-pointer w-56 h-60 rounded-lg'
+      onClick={() => context.openProductDetail()}
+    >
       <figure className='relative mb-2 w-full h-4/5'>
         <span className='absolute bottom-0 left-0 bg-white/60 rounded-lg text-black text-xs m-2 px-3 py-0.5'>
           {`${category} ${id}`}
@@ -16,7 +19,10 @@ const Card = ({ category, id, name, imageURL, price = 100 }: MealDetails) => {
         <img className='w-full h-full object-cover rounded-lg' src={imageURL} alt={name} />
         <button
           className='absolute top-0 right-0 flex justify-center items-center bg-white w-6 h-6 rounded-full m-2 p-1'
-          onClick={() => context.setCount(context.count + 1)}
+          onClick={(e) => {
+            e.stopPropagation();
+            context.setCount(context.count + 1)
+          }}
         >
           <Plus className='h-4 w-4' />
         </button>
