@@ -3,13 +3,19 @@ import { MealDetails } from '../../interfaces/meals.interfaces';
 import { useContext } from 'react';
 import { ShoppingCartContext } from '../../Context';
 
-const Card = ({ category, id, name, imageURL, price = 100 }: MealDetails) => {
+const Card = (data: MealDetails) => {
+  const { category, id, name, imageURL, price = 100 } = data
   const context = useContext(ShoppingCartContext);
+
+  const showProductDetails = (product: MealDetails) => {
+    context.toggleProductDetails();
+    context.setProductToShow(product)
+  }
 
   return (
     <article
       className='bg-white cursor-pointer w-56 h-60 rounded-lg'
-      onClick={() => context.toggleProductDetails()}
+      onClick={() => showProductDetails(data)}
     >
       <figure className='relative mb-2 w-full h-4/5'>
         <span className='absolute bottom-0 left-0 bg-white/60 rounded-lg text-black text-xs m-2 px-3 py-0.5'>

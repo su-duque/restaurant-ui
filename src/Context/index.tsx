@@ -1,4 +1,5 @@
 import { createContext, useState } from 'react';
+import { MealDetails } from '../interfaces/meals.interfaces';
 
 interface ShoppingCartProviderProps {
   children: React.ReactNode;
@@ -9,6 +10,8 @@ interface ShoppingCartContextProps {
   setCount: React.Dispatch<React.SetStateAction<number>>;
   isProductDetailOpen: boolean;
   toggleProductDetails: () => void;
+  productToShow: MealDetails;
+  setProductToShow: React.Dispatch<React.SetStateAction<MealDetails>>;
 }
 
 // Creating a context
@@ -22,6 +25,7 @@ export const ShoppingCartProvider = ({ children }: ShoppingCartProviderProps) =>
   // Product Details panel
   const [isProductDetailOpen, setIsProductDetailOpen] = useState(false);
   const toggleProductDetails = () => setIsProductDetailOpen(!isProductDetailOpen);
+  const [productToShow, setProductToShow] = useState({} as MealDetails);
 
   return (
     <ShoppingCartContext.Provider
@@ -30,6 +34,8 @@ export const ShoppingCartProvider = ({ children }: ShoppingCartProviderProps) =>
         setCount,
         toggleProductDetails,
         isProductDetailOpen,
+        productToShow,
+        setProductToShow,
       }}
     >
       {children}
