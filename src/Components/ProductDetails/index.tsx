@@ -1,26 +1,12 @@
 import { CircleX } from 'lucide-react';
-import { useContext, useEffect, useState } from 'react';
+import { useContext } from 'react';
 import { ShoppingCartContext } from '../../Context';
+import useIngredients from '../../hooks/useIngredients';
 import './styles.css';
 
 const ProductDetails = () => {
   const context = useContext(ShoppingCartContext);
-
-  const [ingredientList, setIngredientList] = useState<string[]>([]);
-
-  useEffect(() => {
-    if (context.productToShow?.id) {
-      fetch(`https://www.themealdb.com/api/json/v1/1/lookup.php?i=${context.productToShow.id}`)
-        .then((response) => response.json())
-        .then((data) => {
-          const product = data.meals[0];
-          const ingredients: string[] = Object.keys(product) // get object keys
-            .filter((key) => key.startsWith('strIngredient') && product[key]) // get the ingredient keys
-            .map((key) => product[key]); // get the value of the ingredient keys
-          setIngredientList(ingredients);
-        });
-    }
-  }, [context.productToShow?.id]);
+  const { ingredientList } = useIngredients(context.productToShow?.id);
 
   if (!context.productToShow) return;
 
