@@ -4,13 +4,18 @@ import { useContext } from 'react';
 import { ShoppingCartContext } from '../../Context';
 
 const Card = (data: MealDetails) => {
-  const { category, id, name, imageURL, price = 100 } = data
+  const { category, id, name, imageURL, price = 100 } = data;
   const context = useContext(ShoppingCartContext);
 
   const showProductDetails = (product: MealDetails) => {
     context.openProductDetails();
-    context.setProductToShow(product)
-  }
+    context.setProductToShow(product);
+  };
+
+  const addProductsToCart = (productData: MealDetails) => {
+    context.setCartProducts([...context.cartProducts, productData]);
+    context.setCount(context.count + 1);
+  };
 
   return (
     <article
@@ -25,9 +30,9 @@ const Card = (data: MealDetails) => {
         <img className='w-full h-full object-cover rounded-lg' src={imageURL} alt={name} />
         <button
           className='absolute top-0 right-0 flex justify-center items-center bg-white w-6 h-6 rounded-full m-2 p-1'
-          onClick={(e) => {
-            e.stopPropagation();
-            context.setCount(context.count + 1)
+          onClick={(event) => {
+            event.stopPropagation(); // avoid opening the Product Details panel when adding a product to the cart
+            addProductsToCart(data);
           }}
         >
           <Plus className='h-4 w-4' />
