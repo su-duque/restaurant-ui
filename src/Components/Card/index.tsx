@@ -10,11 +10,15 @@ const Card = (data: MealDetails) => {
   const showProductDetails = (product: MealDetails) => {
     context.openProductDetails();
     context.setProductToShow(product);
+    context.closeCheckoutPanel();
   };
 
-  const addProductsToCart = (productData: MealDetails) => {
+  const addProductsToCart = (event: React.MouseEvent<HTMLButtonElement, MouseEvent>, productData: MealDetails) => {
+    event.stopPropagation(); // avoid opening the Product Details panel when adding a product to the cart
     context.setCartProducts([...context.cartProducts, productData]);
     context.setCount(context.count + 1);
+    context.openCheckoutPanel();
+    context.closeProductDetails();
   };
 
   return (
@@ -30,9 +34,8 @@ const Card = (data: MealDetails) => {
         <img className='w-full h-full object-cover rounded-lg' src={imageURL} alt={name} />
         <button
           className='absolute top-0 right-0 flex justify-center items-center bg-white w-6 h-6 rounded-full m-2 p-1'
-          onClick={(event) => {
-            event.stopPropagation(); // avoid opening the Product Details panel when adding a product to the cart
-            addProductsToCart(data);
+          onClick={(event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
+            addProductsToCart(event, data);
           }}
         >
           <Plus className='h-4 w-4' />

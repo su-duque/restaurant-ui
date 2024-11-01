@@ -15,6 +15,9 @@ interface ShoppingCartContextProps {
   setProductToShow: React.Dispatch<React.SetStateAction<MealDetails | undefined>>;
   cartProducts: MealDetails[];
   setCartProducts: React.Dispatch<React.SetStateAction<MealDetails[]>>;
+  openCheckoutPanel: () => void;
+  closeCheckoutPanel: () => void;
+  isCheckoutPanelOpen: boolean;
 }
 
 // Creating a context
@@ -30,7 +33,12 @@ export const ShoppingCartProvider = ({ children }: ShoppingCartProviderProps) =>
 
   // Shopping Cart
   const [count, setCount] = useState(0);
-  const [cartProducts, setCartProducts] = useState<MealDetails[]>([])
+  const [cartProducts, setCartProducts] = useState<MealDetails[]>([]);
+
+  // Checkout side panel
+  const [isCheckoutPanelOpen, setIsCheckoutPanelOpen] = useState(false);
+  const openCheckoutPanel = () => setIsCheckoutPanelOpen(true);
+  const closeCheckoutPanel = () => setIsCheckoutPanelOpen(false);
 
   return (
     <ShoppingCartContext.Provider
@@ -44,6 +52,9 @@ export const ShoppingCartProvider = ({ children }: ShoppingCartProviderProps) =>
         setProductToShow,
         cartProducts,
         setCartProducts,
+        openCheckoutPanel,
+        closeCheckoutPanel,
+        isCheckoutPanelOpen,
       }}
     >
       {children}

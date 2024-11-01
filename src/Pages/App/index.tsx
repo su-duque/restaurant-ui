@@ -11,6 +11,7 @@ import SignIn from '../SignIn';
 
 import NavBar from '../../Components/NavBar';
 import Layout from '../../Components/Layout';
+import CheckoutSidePanel from '../../Components/CheckoutSidePanel';
 
 import './App.css';
 
@@ -31,6 +32,7 @@ const App = () => {
     <ShoppingCartProvider>
       <BrowserRouter>
         <NavBar />
+        <CheckoutSidePanel />
         <Layout>
           <AppRoutes />
         </Layout>
