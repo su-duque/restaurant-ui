@@ -4,7 +4,7 @@ import { MealDetails, MealResponse } from '../../interfaces/meals.interfaces';
 
 import Card from '../../Components/Card';
 import ProductDetails from '../../Components/ProductDetails';
-import { getRandomPrice } from '../../utils/numbers';
+import { getRandomPrice } from '../../utils';
 
 function Home() {
   const [items, setItems] = useState<MealDetails[]>([]);
