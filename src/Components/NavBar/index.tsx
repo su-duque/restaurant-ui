@@ -52,12 +52,6 @@ const NavBar = () => {
 
   const rightMenu = [
     {
-      className: 'text-black/60',
-      text: 'test@email.com',
-      route: '/my-account',
-      hasActiveState: false,
-    },
-    {
       className: '',
       text: 'My Orders',
       route: '/my-orders',
