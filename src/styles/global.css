@@ -1,4 +1,4 @@
-.product-detail {
+.side-panel {
   width: 360px;
   height: fit-content; /*calc(100vh - 5rem);*/ /* height equal to the length of the screen*/
   top: 5rem; /* 5rem is approximately the NavBar height */
