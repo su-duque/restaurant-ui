@@ -13,7 +13,6 @@ const ProductDetails = () => {
     fetch(`https://www.themealdb.com/api/json/v1/1/lookup.php?i=${context.productToShow.id}`)
       .then((response) => response.json())
       .then((data) => {
-        console.log('*** ~ file: index.tsx:15 ~ .then ~ data:', data.meals[0]);
         const product = data.meals[0];
         const ingredients: string[] = Object.keys(product) // get object keys
           .filter((key) => key.startsWith('strIngredient') && product[key]) // get the ingredient keys
