@@ -4,6 +4,7 @@ import { MealDetails, MealResponse } from '../../interfaces/meals.interfaces';
 
 import Card from '../../Components/Card';
 import ProductDetails from '../../Components/ProductDetails';
+import { getRandomPrice } from '../../utils/numbers';
 
 function Home() {
   const [items, setItems] = useState<MealDetails[]>([]);
@@ -18,6 +19,7 @@ function Home() {
             id: idMeal,
             name: strMeal,
             imageURL: strMealThumb,
+            price: getRandomPrice(),
           };
           return meal;
         });
@@ -36,6 +38,7 @@ function Home() {
             category={'Breakfast'}
             name={meal.name}
             imageURL={meal.imageURL}
+            price={meal.price}
           />
         ))}
       </section>

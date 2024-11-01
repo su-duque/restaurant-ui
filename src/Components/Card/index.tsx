@@ -4,7 +4,7 @@ import { useContext } from 'react';
 import { ShoppingCartContext } from '../../Context';
 
 const Card = (data: MealDetails) => {
-  const { category, id, name, imageURL, price = 100 } = data;
+  const { category, id, name, imageURL, price } = data;
   const context = useContext(ShoppingCartContext);
 
   const showProductDetails = (product: MealDetails) => {
