@@ -18,9 +18,11 @@ const CheckoutSidePanel = () => {
     context.setCartProducts(filteredProducts);
   };
 
+  const date = new Date();
+
   const handleCheckout = () => {
     const orderToAdd = {
-      date: '01.02.24',
+      date: date.toLocaleDateString(),
       products: context.cartProducts,
       totalProducts: context.cartProducts.length,
       totalPrice: totalPrice(context.cartProducts),
