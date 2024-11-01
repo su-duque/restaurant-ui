@@ -1,8 +1,14 @@
 import { CircleMinus } from 'lucide-react';
-import { MealDetails } from '../../interfaces/meals.interfaces';
 
-const OrderCard = (data: MealDetails) => {
-  const { price, name, imageURL } = data;
+interface OrderCardPRops {
+  id: string;
+  name: string;
+  imageURL: string;
+  price: number;
+  handleDelete: (id:string) => void;
+}
+
+const OrderCard = ({ id, name, imageURL, price, handleDelete }: OrderCardPRops) => {
   return (
     <div className='flex justify-between items-center mb-3 px-6'>
       <div className='flex items-center gap-2'>
@@ -13,7 +19,7 @@ const OrderCard = (data: MealDetails) => {
       </div>
       <div className='flex items-center gap-2'>
         <p className='text-lg font-medium'>${price}</p>
-        <button>
+        <button onClick={() => handleDelete(id)}>
           <CircleMinus strokeWidth={1} />
         </button>
       </div>

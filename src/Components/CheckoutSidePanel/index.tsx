@@ -7,6 +7,12 @@ import './styles.css';
 const CheckoutSidePanel = () => {
   const context = useContext(ShoppingCartContext);
 
+  const handleDelete = (id: string) => {
+    // Return everything that is different from the id (product selected on the panel)
+    const filteredProducts = context.cartProducts.filter((product) => product.id != id);
+    context.setCartProducts(filteredProducts);
+  };
+
   if (!context.productToShow) return;
 
   return (
@@ -27,6 +33,7 @@ const CheckoutSidePanel = () => {
             name={product.name}
             imageURL={product.imageURL}
             price={product.price}
+            handleDelete={handleDelete}
           />
         ))}
       </div>
