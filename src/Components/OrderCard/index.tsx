@@ -5,7 +5,7 @@ interface OrderCardPRops {
   name: string;
   imageURL: string;
   price: number;
-  handleDelete: (id:string) => void;
+  handleDelete?: (id: string) => void;
 }
 
 const OrderCard = ({ id, name, imageURL, price, handleDelete }: OrderCardPRops) => {
@@ -19,9 +19,9 @@ const OrderCard = ({ id, name, imageURL, price, handleDelete }: OrderCardPRops) 
       </div>
       <div className='flex items-center gap-2'>
         <p className='text-lg font-medium'>${price}</p>
-        <button onClick={() => handleDelete(id)}>
+        {handleDelete && (<button onClick={() => handleDelete(id)}>
           <CircleMinus strokeWidth={1} />
-        </button>
+        </button>)}
       </div>
     </div>
   );
