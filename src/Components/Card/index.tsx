@@ -33,7 +33,7 @@ const Card = (data: MealDetails) => {
           <Plus className='h-4 w-4' />
         </button>
       </figure>
-      <p className='flex justify-between'>
+      <p className='flex justify-between items-center gap-2 px-2'>
         <span className='text-sm font-light'>{name}</span>
         <span className='text-lg font-medium'>${price}</span>
       </p>
