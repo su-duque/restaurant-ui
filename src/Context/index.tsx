@@ -13,6 +13,8 @@ interface ShoppingCartContextProps {
   closeProductDetails: () => void;
   productToShow: MealDetails;
   setProductToShow: React.Dispatch<React.SetStateAction<MealDetails>>;
+  cartProducts: MealDetails[];
+  setCartProducts: React.Dispatch<React.SetStateAction<MealDetails[]>>;
 }
 
 // Creating a context
@@ -20,14 +22,15 @@ export const ShoppingCartContext = createContext({} as ShoppingCartContextProps)
 
 // Creating the provider
 export const ShoppingCartProvider = ({ children }: ShoppingCartProviderProps) => {
-  // Cart counter
-  const [count, setCount] = useState(0);
-
   // Product Details panel
   const [isProductDetailOpen, setIsProductDetailOpen] = useState(false);
   const openProductDetails = () => setIsProductDetailOpen(true);
   const closeProductDetails = () => setIsProductDetailOpen(false);
   const [productToShow, setProductToShow] = useState({} as MealDetails);
+
+  // Shopping Cart
+  const [count, setCount] = useState(0);
+  const [cartProducts, setCartProducts] = useState<MealDetails[]>([])
 
   return (
     <ShoppingCartContext.Provider
@@ -39,6 +42,8 @@ export const ShoppingCartProvider = ({ children }: ShoppingCartProviderProps) =>
         isProductDetailOpen,
         productToShow,
         setProductToShow,
+        cartProducts,
+        setCartProducts,
       }}
     >
       {children}
