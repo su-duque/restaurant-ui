@@ -21,31 +21,31 @@ const NavBar = () => {
     {
       className: '',
       text: 'Breakfast',
-      route: '/breakfast',
+      route: '/category/breakfast',
       hasActiveState: true,
     },
     {
       className: '',
       text: 'Chicken',
-      route: '/chicken',
+      route: '/category/chicken',
       hasActiveState: true,
     },
     {
       className: '',
       text: 'Pasta',
-      route: '/pasta',
+      route: '/category/pasta',
       hasActiveState: true,
     },
     {
       className: '',
       text: 'Vegan',
-      route: '/vegan',
+      route: '/category/vegan',
       hasActiveState: true,
     },
     {
       className: '',
       text: 'Dessert',
-      route: '/dessert',
+      route: '/category/dessert',
       hasActiveState: true,
     },
   ];
