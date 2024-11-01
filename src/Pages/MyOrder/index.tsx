@@ -1,11 +1,15 @@
 import { useContext } from 'react';
 import { ShoppingCartContext } from '../../Context';
 import OrderCard from '../../Components/OrderCard';
-import { Link } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 import { ChevronLeft } from 'lucide-react';
+import { totalPrice } from '../../utils';
 
 function MyOrder() {
   const context = useContext(ShoppingCartContext);
+  const {id} = useParams();
+  const currentPathIndex = Number(id);
+  const orderToShow = id ? context.order?.[currentPathIndex] : context.order?.[context.order?.length - 1];
 
   return (
     <>
@@ -16,17 +20,21 @@ function MyOrder() {
         <h1>My Order</h1>
       </div>
       <div className='flex flex-col w-80'>
-        {context.order
-          ?.slice(-1)[0]
-          .products.map((product) => (
-            <OrderCard
-              key={product.id}
-              id={product.id}
-              name={product.name}
-              imageURL={product.imageURL}
-              price={product.price}
-            />
-          ))}
+        {orderToShow?.products.map((product) => (
+          <OrderCard
+            key={product.id}
+            id={product.id}
+            name={product.name}
+            imageURL={product.imageURL}
+            price={product.price}
+          />
+        ))}
+      </div>
+      <div className='mb-6'>
+        <p className='flex justify-between items-center mb-2 w-80 px-6'>
+          <span className='font-medium'>Total:</span>
+          <span className='font-medium text-2xl'>${totalPrice(orderToShow?.products)}</span>
+        </p>
       </div>
     </>
   );
