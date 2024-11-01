@@ -1,6 +1,6 @@
 import { CircleMinus } from 'lucide-react';
 
-interface OrderCardPRops {
+interface OrderCardProps {
   id: string;
   name: string;
   imageURL: string;
@@ -8,7 +8,7 @@ interface OrderCardPRops {
   handleDelete?: (id: string) => void;
 }
 
-const OrderCard = ({ id, name, imageURL, price, handleDelete }: OrderCardPRops) => {
+const OrderCard = ({ id, name, imageURL, price, handleDelete }: OrderCardProps) => {
   return (
     <div className='flex justify-between items-center mb-3 px-6'>
       <div className='flex items-center gap-2'>
