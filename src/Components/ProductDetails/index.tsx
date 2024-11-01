@@ -2,7 +2,7 @@ import { CircleX } from 'lucide-react';
 import { useContext } from 'react';
 import { ShoppingCartContext } from '../../Context';
 import useIngredients from '../../hooks/useIngredients';
-import '../../styles/global.css';
+import './styles.css';
 
 const ProductDetails = () => {
   const context = useContext(ShoppingCartContext);
@@ -12,7 +12,7 @@ const ProductDetails = () => {
 
   return (
     <aside
-      className={`${context.isProductDetailOpen ? 'flex' : 'hidden'} side-panel flex-col fixed right-0 border border-black rounded-lg bg-white`}
+      className={`${context.isProductDetailOpen ? 'flex' : 'hidden'} side-panel-details flex-col fixed right-0 border border-black rounded-lg bg-white`}
     >
       <div className='flex justify-between items-center p-6'>
         <h2 className='font-medium text-xl'>Details</h2>

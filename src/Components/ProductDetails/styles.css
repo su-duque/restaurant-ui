@@ -1,0 +1,5 @@
+.side-panel-details {
+  width: 360px;
+  height: fit-content;
+  top: 5rem; /* 5rem is approximately the NavBar height */
+}
