@@ -14,6 +14,17 @@ const CheckoutSidePanel = () => {
     context.setCartProducts(filteredProducts);
   };
 
+  const handleCheckout = () => {
+    const orderToAdd = {
+      date: '01.02.24',
+      products: context.cartProducts,
+      totalProducts: context.cartProducts.length,
+      totalPrice: totalPrice(context.cartProducts),
+    };
+    context.setOrder([...context.order, orderToAdd]);
+    context.setCartProducts([]);
+  };
+
   if (!context.productToShow) return;
 
   return (
@@ -26,7 +37,7 @@ const CheckoutSidePanel = () => {
           <CircleX strokeWidth={1} onClick={() => context.closeCheckoutPanel()} />
         </button>
       </div>
-      <div className='overflow-y-auto'>
+      <div className='overflow-y-auto flex-1'>
         {context.cartProducts.map((product) => (
           <OrderCard
             key={product.id}
@@ -38,11 +49,12 @@ const CheckoutSidePanel = () => {
           />
         ))}
       </div>
-      <div className='px-6'>
-        <p className='flex justify-between items-center'>
+      <div className='px-6 mb-6'>
+        <p className='flex justify-between items-center mb-2'>
           <span className='font-medium'>Total:</span>
           <span className='font-medium text-2xl'>${totalPrice(context.cartProducts)}</span>
         </p>
+        <button className='bg-black py-3 w-full text-white rounded-lg' onClick={() => handleCheckout()}>Checkout</button>
       </div>
     </aside>
   );

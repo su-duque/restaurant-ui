@@ -1,5 +1,5 @@
 import { createContext, useState } from 'react';
-import { MealDetails } from '../interfaces/meals.interfaces';
+import { MealDetails, OrderDetails } from '../interfaces/meals.interfaces';
 
 interface ShoppingCartProviderProps {
   children: React.ReactNode;
@@ -18,6 +18,8 @@ interface ShoppingCartContextProps {
   openCheckoutPanel: () => void;
   closeCheckoutPanel: () => void;
   isCheckoutPanelOpen: boolean;
+  order: OrderDetails[];
+  setOrder: React.Dispatch<React.SetStateAction<OrderDetails[]>>;
 }
 
 // Creating a context
@@ -40,6 +42,9 @@ export const ShoppingCartProvider = ({ children }: ShoppingCartProviderProps) =>
   const openCheckoutPanel = () => setIsCheckoutPanelOpen(true);
   const closeCheckoutPanel = () => setIsCheckoutPanelOpen(false);
 
+  // Shopping Cart - Order
+  const [order, setOrder] = useState<OrderDetails[]>([]);
+
   return (
     <ShoppingCartContext.Provider
       value={{
@@ -55,6 +60,8 @@ export const ShoppingCartProvider = ({ children }: ShoppingCartProviderProps) =>
         openCheckoutPanel,
         closeCheckoutPanel,
         isCheckoutPanelOpen,
+        order,
+        setOrder
       }}
     >
       {children}

@@ -11,3 +11,10 @@ export interface MealResponse {
   strMealThumb: string;
   idMeal: string;
 }
+
+export interface OrderDetails {
+  date: string;
+  products: MealDetails[];
+  totalProducts: number;
+  totalPrice: number;
+}
