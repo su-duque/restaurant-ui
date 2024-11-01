@@ -63,18 +63,6 @@ const NavBar = () => {
       route: '/my-orders',
       hasActiveState: true,
     },
-    {
-      className: '',
-      text: 'My Account',
-      route: '/my-account',
-      hasActiveState: true,
-    },
-    {
-      className: '',
-      text: 'Sign In',
-      route: '/sign-in',
-      hasActiveState: true,
-    },
   ];
 
   const activeStyle = 'underline underline-offset-4';
