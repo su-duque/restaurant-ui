@@ -9,17 +9,20 @@ const ProductDetails = () => {
   const [ingredientList, setIngredientList] = useState<string[]>([]);
 
   useEffect(() => {
-    if (!context.productToShow.id) return;
-    fetch(`https://www.themealdb.com/api/json/v1/1/lookup.php?i=${context.productToShow.id}`)
-      .then((response) => response.json())
-      .then((data) => {
-        const product = data.meals[0];
-        const ingredients: string[] = Object.keys(product) // get object keys
-          .filter((key) => key.startsWith('strIngredient') && product[key]) // get the ingredient keys
-          .map((key) => product[key]); // get the value of the ingredient keys
-        setIngredientList(ingredients);
-      });
-  }, [context.productToShow.id]);
+    if (context.productToShow?.id) {
+      fetch(`https://www.themealdb.com/api/json/v1/1/lookup.php?i=${context.productToShow.id}`)
+        .then((response) => response.json())
+        .then((data) => {
+          const product = data.meals[0];
+          const ingredients: string[] = Object.keys(product) // get object keys
+            .filter((key) => key.startsWith('strIngredient') && product[key]) // get the ingredient keys
+            .map((key) => product[key]); // get the value of the ingredient keys
+          setIngredientList(ingredients);
+        });
+    }
+  }, [context.productToShow?.id]);
+
+  if (!context.productToShow) return;
 
   return (
     <aside

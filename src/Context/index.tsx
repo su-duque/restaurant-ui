@@ -11,8 +11,8 @@ interface ShoppingCartContextProps {
   isProductDetailOpen: boolean;
   openProductDetails: () => void;
   closeProductDetails: () => void;
-  productToShow: MealDetails;
-  setProductToShow: React.Dispatch<React.SetStateAction<MealDetails>>;
+  productToShow: MealDetails | undefined;
+  setProductToShow: React.Dispatch<React.SetStateAction<MealDetails | undefined>>;
   cartProducts: MealDetails[];
   setCartProducts: React.Dispatch<React.SetStateAction<MealDetails[]>>;
 }
@@ -26,7 +26,7 @@ export const ShoppingCartProvider = ({ children }: ShoppingCartProviderProps) =>
   const [isProductDetailOpen, setIsProductDetailOpen] = useState(false);
   const openProductDetails = () => setIsProductDetailOpen(true);
   const closeProductDetails = () => setIsProductDetailOpen(false);
-  const [productToShow, setProductToShow] = useState({} as MealDetails);
+  const [productToShow, setProductToShow] = useState<MealDetails | undefined>(undefined);
 
   // Shopping Cart
   const [count, setCount] = useState(0);
