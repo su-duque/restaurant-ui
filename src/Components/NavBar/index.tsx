@@ -80,7 +80,7 @@ const NavBar = () => {
       </ul>
 
       <ul className='flex items-center gap-3'>
-        {rightMenu.map((item) => (
+        {context.order.length > 0 && rightMenu.map((item) => (
           <li key={item.text} className={item.className}>
             <NavLink
               to={item.route}
