@@ -6,8 +6,6 @@ interface ShoppingCartProviderProps {
 }
 
 interface ShoppingCartContextProps {
-  count: number;
-  setCount: React.Dispatch<React.SetStateAction<number>>;
   isProductDetailOpen: boolean;
   openProductDetails: () => void;
   closeProductDetails: () => void;
@@ -34,7 +32,6 @@ export const ShoppingCartProvider = ({ children }: ShoppingCartProviderProps) =>
   const [productToShow, setProductToShow] = useState<MealDetails | undefined>(undefined);
 
   // Shopping Cart
-  const [count, setCount] = useState(0);
   const [cartProducts, setCartProducts] = useState<MealDetails[]>([]);
 
   // Checkout side panel
@@ -48,8 +45,6 @@ export const ShoppingCartProvider = ({ children }: ShoppingCartProviderProps) =>
   return (
     <ShoppingCartContext.Provider
       value={{
-        count,
-        setCount,
         openProductDetails,
         closeProductDetails,
         isProductDetailOpen,
@@ -61,7 +56,7 @@ export const ShoppingCartProvider = ({ children }: ShoppingCartProviderProps) =>
         closeCheckoutPanel,
         isCheckoutPanelOpen,
         order,
-        setOrder
+        setOrder,
       }}
     >
       {children}

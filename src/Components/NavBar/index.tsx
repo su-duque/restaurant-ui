@@ -98,9 +98,17 @@ const NavBar = () => {
             </NavLink>
           </li>
         ))}
-        <li className='flex items-center  gap-0.5'>
-          <ShoppingCart strokeWidth={1} />
-          <div>{context.count}</div>
+        <li>
+          <button
+            className='flex items-center gap-0.5'
+            onClick={() => {
+              context.openCheckoutPanel();
+              context.closeProductDetails();
+            }}
+          >
+            <ShoppingCart strokeWidth={1} />
+            <div>{context.cartProducts.length}</div>
+          </button>
         </li>
       </ul>
     </nav>

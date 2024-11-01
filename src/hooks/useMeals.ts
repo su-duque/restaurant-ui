@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import { MealDetails, MealResponse } from '../interfaces/meals.interfaces';
 import { getRandomPrice } from '../utils';
 
-const useMeals = (category: string = 'breakfast') => {
+const useMeals = (category: string = 'chicken') => {
   const [meals, setMeals] = useState<MealDetails[]>([]);
 
   useEffect(() => {

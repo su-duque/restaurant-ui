@@ -19,7 +19,6 @@ const Card = (data: MealDetails) => {
   ) => {
     event.stopPropagation(); // avoid opening the Product Details panel when adding a product to the cart
     context.setCartProducts([...context.cartProducts, productData]);
-    context.setCount(context.count + 1);
     context.openCheckoutPanel();
     context.closeProductDetails();
   };
