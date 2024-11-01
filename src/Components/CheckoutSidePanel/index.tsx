@@ -26,7 +26,7 @@ const CheckoutSidePanel = () => {
           <CircleX strokeWidth={1} onClick={() => context.closeCheckoutPanel()} />
         </button>
       </div>
-      <div className='overflow-y-scroll'>
+      <div className='overflow-y-auto'>
         {context.cartProducts.map((product) => (
           <OrderCard
             key={product.id}
