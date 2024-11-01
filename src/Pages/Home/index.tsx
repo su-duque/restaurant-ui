@@ -29,7 +29,9 @@ function Home() {
 
   return (
     <>
-      Home
+      <div className='flex w-80 items-center relative justify-center mb-6'>
+        <h1>Home</h1>
+      </div>
       <section className='grid place-items-center gap-4 grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 w-full max-w-screen-lg'>
         {items?.map((meal) => (
           <Card
